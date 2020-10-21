@@ -1,0 +1,29 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="RECEBIDAS">
+        <div fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%;">
+            <ng-container *ngFor="let cobranca of cobrancasRecebidas" style="margin: 0.5%;">
+                <mat-card class="example-card" fxFlex="0 1 calc(33.3% - 11px)" fxFlex.lt-md="0 1 calc(50% - 11px)" fxFlex.lt-sm="80%">
+                    <mat-card-content>
+                        <div class="row">
+                            <p>
+                                <span fxFlex="15" fxLayoutAlign="start center">{{cobranca.pagadorAreaId}}</span>
+                                <span fxFlex></span>
+                                <span fxFlex="55" fxLayoutAlign="end center">{{cobranca.datahora}}</span>
+                            </p>
+                        </div>
+<!--                        <p [ngStyle]="{'color':(cobranca.valor%2==0)?'green':'red'}">-->
+                        <p>
+                           R$ {{(cobranca.valor).toFixed(2)}}
+                        </p>
+                        <p>
+                            {{cobranca.descricao}}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </div>
+    </mat-tab>
+    <mat-tab label="ENVIADAS">
+        <span>place-holder</span>
+    </mat-tab>
+</mat-tab-group>

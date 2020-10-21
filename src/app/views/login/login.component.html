@@ -1,0 +1,73 @@
+<div>
+    <div style="padding-top: 10rem;" fxLayout="row wrap" fxLayoutAlign="center stretch" class="form-container">
+        <mat-card style="border-radius: 4px 0 0 4px;border-right: 1px solid #d9d9d9;" fxFlex="0 1 calc(35% - 11px)"
+                  fxFlex.lt-md="0 1 calc(35% - 11px)"
+                  fxFlex.lt-sm="100%">
+            <div class="row">
+                <h2>Register</h2>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your username</mat-label>
+                    <input matInput placeholder="Placeholder" required>
+                    <mat-icon matSuffix>assignment_ind</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your name</mat-label>
+                    <input matInput placeholder="Placeholder" required>
+                    <mat-icon matSuffix>how_to_reg</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="user@mail.com" [formControl]="email" required>
+                    <mat-icon matSuffix>mail</mat-icon>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary">Register</button>
+            </div>
+        </mat-card>
+        <mat-card style="border-radius: 0 4px 4px 0;border-left: 1px solid #d9d9d9;" fxFlex="0 1 calc(35% - 11px)"
+                  fxFlex.lt-md="0 1 calc(35% - 11px)"
+                  fxFlex.lt-sm="100%">
+            <div class="row">
+                <h2>Login</h2>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your username</mat-label>
+                    <input matInput placeholder="Placeholder" required>
+                    <mat-icon matSuffix>assignment_ind</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary">Login</button>
+            </div>
+        </mat-card>
+    </div>
+</div>
