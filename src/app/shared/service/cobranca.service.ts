@@ -9,16 +9,18 @@ import {CobrancaInterna} from '../models/cobrancaInterna.model';
 export class CobrancaService {
 
     private apiUrl = 'http://localhost:8080/cobranca-interna';
-    private awtToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3bGltYSIsImV4cCI6MTYwMzMwNjkyNCwicm9sIjpbXX0.9IW2A-cA3xbEzJpQTuhxeQ32zBxkrCFk2RezzgVWN3rTi4QzRqxaAs5RpkXB9mawtWkIJaAXfXZbnGMtRFPvcw';
-
-    private httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.awtToken}`
-        })
-    };
+    private awtToken: string;
+    private httpOptions: { headers: HttpHeaders };
 
     constructor(private httpClient: HttpClient) {
+        this.awtToken = localStorage.getItem('access_token');
+
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${this.awtToken}`
+            })
+        };
     }
 
     public listCobrancas(): Observable<CobrancaInterna[]> {

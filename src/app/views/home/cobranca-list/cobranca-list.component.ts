@@ -13,7 +13,7 @@ export class CobrancaListComponent implements OnInit {
     cobrancasRecebidas: CobrancaInterna[];
     cobrancasEnviadas: CobrancaInterna[];
 
-    constructor(public cobrancaService: CobrancaService) {
+    constructor(private cobrancaService: CobrancaService) {
     }
 
     ngOnInit(): void {
@@ -24,14 +24,12 @@ export class CobrancaListComponent implements OnInit {
     listCobrancasRecebidas(areaId: number): void {
         this.cobrancaService.listCobrancasRecebidas(areaId).subscribe((data) => {
             this.cobrancasRecebidas = data;
-            console.log(this.cobrancasRecebidas);
         });
     }
 
     listCobrancasEnviadas(areaId: number): void {
         this.cobrancaService.listCobrancasEnviadas(areaId).subscribe((data) => {
             this.cobrancasEnviadas = data;
-            console.log(this.cobrancasEnviadas);
         });
     }
 
