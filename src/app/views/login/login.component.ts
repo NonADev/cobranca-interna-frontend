@@ -23,6 +23,20 @@ export class LoginComponent implements OnInit {
     hide = true;
 
     register(): void {
+        if (this.username.invalid) {
+            alert('Username inválido');
+            return;
+        } else if (this.password.invalid) {
+            alert('Senha inválida');
+            return;
+        } else if (this.email.invalid) {
+            alert('Email inválido');
+            return;
+        } else if (this.completeName.invalid) {
+            alert('Nome inválido');
+            return;
+        }
+
         this.userService.register(this.username.value, this.password.value, this.email.value, this.completeName.value)
             .pipe(catchError((error) => {
                 alert(error.error.error);
@@ -34,6 +48,14 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
+        if (this.LoginUsername.invalid) {
+            alert('Login inválido');
+            return;
+        } else if (this.LoginPassword.invalid) {
+            alert('Senha inválida');
+            return;
+        }
+
         this.userService.login(this.LoginUsername.value, this.LoginPassword.value)
             .pipe(retry(2), catchError((error: HttpErrorResponse) => {
                 alert(error.error.error);

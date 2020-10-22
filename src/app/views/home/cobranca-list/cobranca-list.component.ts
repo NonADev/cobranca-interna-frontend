@@ -17,19 +17,21 @@ export class CobrancaListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.listCobrancasRecebidas(2);
-        this.listCobrancasEnviadas(1);
+        this.listCobrancasRecebidas(1);
+        this.listCobrancasEnviadas(4);
     }
 
     listCobrancasRecebidas(areaId: number): void {
         this.cobrancaService.listCobrancasRecebidas(areaId).subscribe((data) => {
             this.cobrancasRecebidas = data;
+            console.log(data);
         });
     }
 
     listCobrancasEnviadas(areaId: number): void {
         this.cobrancaService.listCobrancasEnviadas(areaId).subscribe((data) => {
             this.cobrancasEnviadas = data;
+            console.log(data);
         });
     }
 
