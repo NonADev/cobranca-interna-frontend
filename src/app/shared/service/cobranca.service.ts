@@ -17,8 +17,7 @@ export class CobrancaService {
 
         this.httpOptions = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.awtToken}`
+                'Content-Type': 'application/json'
             })
         };
     }

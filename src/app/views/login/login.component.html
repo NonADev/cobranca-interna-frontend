@@ -9,7 +9,7 @@
             <div class="row">
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your username</mat-label>
-                    <input matInput placeholder="Placeholder" [formControl]="username" required>
+                    <input matInput placeholder="Username" [formControl]="username" required>
                     <mat-icon matSuffix>assignment_ind</mat-icon>
                     <mat-error *ngIf="username.invalid">{{getUsernameErrorMessage()}}</mat-error>
                 </mat-form-field>
@@ -17,7 +17,7 @@
             <div class="row">
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your name</mat-label>
-                    <input matInput placeholder="Placeholder" [formControl]="completeName" required>
+                    <input matInput placeholder="Name" [formControl]="completeName" required>
                     <mat-icon matSuffix>how_to_reg</mat-icon>
                     <mat-error *ngIf="completeName.invalid">{{getNameErrorMessage()}}</mat-error>
                 </mat-form-field>
@@ -54,7 +54,7 @@
             <div class="row">
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your username</mat-label>
-                    <input matInput placeholder="Placeholder" [formControl]="LoginUsername" required>
+                    <input matInput placeholder="Username" [formControl]="LoginUsername" required>
                     <mat-icon matSuffix>assignment_ind</mat-icon>
                     <mat-error *ngIf="LoginUsername.invalid">{{getLoginUsernameErrorMessage()}}</mat-error>
                 </mat-form-field>

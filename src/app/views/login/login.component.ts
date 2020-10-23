@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {UserService} from '../../shared/service/user.service';
-import {catchError, retry} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {HttpErrorResponse} from '@angular/common/http';
 import {throwError} from 'rxjs';
 
@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     LoginPassword = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
     hide = true;
+    loginForm: any;
 
     register(): void {
         if (this.username.invalid) {
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
                 alert(error.error.error);
                 return throwError(error.error.error);
             })).subscribe((data) => {
-            alert(`Usuario ${data.login} egistrado com sucesso!`);
+            alert(`Usuario ${data.login} registrado com sucesso!`);
             window.location.reload();
         });
     }
@@ -57,10 +58,12 @@ export class LoginComponent implements OnInit {
         }
 
         this.userService.login(this.LoginUsername.value, this.LoginPassword.value)
-            .pipe(retry(2), catchError((error: HttpErrorResponse) => {
+            .pipe(catchError((error: HttpErrorResponse) => {
                 alert(error.error.error);
                 return throwError(error.error.error);
             })).subscribe((data) => {
+            console.log(data);
+            localStorage.setItem('user_data', JSON.stringify(data.me));
             localStorage.setItem('access_token', data.access_token);
             window.location.href = '/home';
         });
@@ -112,6 +115,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        localStorage.clear();
     }
-
 }

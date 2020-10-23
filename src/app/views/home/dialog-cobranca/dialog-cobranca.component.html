@@ -1,0 +1,37 @@
+<div>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Areas do user</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Areas alvo (escolher entre todas)</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Descrição</mat-label>
+            <input matInput placeholder="Placeholder" required>
+        </mat-form-field>
+    </p>
+    <p>
+        >>adicionar calendario<<
+    </p>
+    <p>
+        >>adicionar hora<<
+    </p>
+    <p>
+        <button style="margin-top: 5%;" mat-raised-button color="primary">Registrar</button>
+    </p>
+</div>

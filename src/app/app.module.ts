@@ -11,24 +11,33 @@ import {MatButtonModule} from '@angular/material/button';
 import {CobrancaListComponent} from './views/home/cobranca-list/cobranca-list.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {LoginComponent} from './views/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
-
+import {ErrorInterceptor} from './shared/helper/error.interceptor';
+import {JwtInterceptor} from './shared/helper/jwt.interceptor';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogCobrancaComponent } from './views/home/dialog-cobranca/dialog-cobranca.component';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         CobrancaListComponent,
-        LoginComponent
+        LoginComponent,
+        DialogCobrancaComponent
     ],
     imports: [
+        MatOptionModule,
+        MatSelectModule,
         HttpClientModule,
         MatInputModule,
+        MatDialogModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -41,7 +50,10 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatFormFieldModule,
         ReactiveFormsModule
     ],
-    providers: [],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
